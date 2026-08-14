@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Strategic Zone Intelligence — Global market research, panel research, quantitative surveys, qualitative research and fieldwork solutions." />
+  <meta name="theme-color" content="#050816" />
+  <title>Strategic Zone Intelligence | Global Market Research</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Plus Jakarta Sans', 'sans-serif']
+          },
+          colors: {
+            neon: '#00F2FE',
+            royal: '#4FACFE',
+            emerald: '#00D084',
+            purple: '#A855F7'
+          },
+          boxShadow: {
+            neon: '0 0 35px rgba(0,242,254,.22)',
+            purpleGlow: '0 0 35px rgba(168,85,247,.20)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg: #050816;
+      --panel: rgba(10, 18, 38, .72);
+      --panel-strong: rgba(8, 15, 32, .9);
+      --cyan: #00f2fe;
+      --blue: #4facfe;
+      --green: #00d084;
+      --purple: #a855f7;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(0,242,254,.07), transparent 28%),
+        radial-gradient(circle at 90% 30%, rgba(168,85,247,.08), transparent 30%),
+        #050816;
+      color: #eaf2ff;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(0,242,254,.3);
+      color: #fff;
+    }
+
+    .glass {
+      background: linear-gradient(135deg, rgba(17, 28, 55, .78), rgba(7, 15, 32, .62));
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 20px 70px rgba(0,0,0,.28);
+    }
+
+    .glass-light {
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #00f2fe, #4facfe, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .gradient-border {
+      position: relative;
+      border: 1px solid transparent;
+      background:
+        linear-gradient(#081126, #081126) padding-box,
+        linear-gradient(90deg, #00f2fe, #4facfe, #a855f7, #00d084) border-box;
+    }
+
+    .ticker {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 42px;
+      overflow: hidden;
+      background: rgba(3,8,20,.88);
+      backdrop-filter: blur(15px);
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: tickerRTL 32s linear infinite;
+      white-space: nowrap;
+      height: 100%;
+      align-items: center;
+    }
+
+    .ticker:hover .ticker-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes tickerRTL {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .hero-live-image {
+      animation:
+        float 3s ease-in-out infinite,
+        pulseGlow 2s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+      }
+      25% {
+        transform: translateY(-8px) rotateX(1deg) rotateY(-1deg) rotateZ(.35deg);
+      }
+      50% {
+        transform: translateY(-14px) rotateX(-1deg) rotateY(1.5deg) rotateZ(-.35deg);
+      }
+      75% {
+        transform: translateY(-7px) rotateX(.5deg) rotateY(-1deg) rotateZ(.25deg);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        filter: brightness(1) saturate(1);
+        box-shadow: 0 0 20px rgba(0,242,254,.12), 0 0 60px rgba(79,172,254,.08);
+      }
+      50% {
+        filter: brightness(1.12) saturate(1.15);
+        box-shadow: 0 0 38px rgba(0,242,254,.27), 0 0 90px rgba(168,85,247,.14);
+      }
+    }
+
+    .orb {
+      animation: orbFloat 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes orbFloat {
+      from { transform: translate(0,0) scale(1); }
+      to { transform: translate(25px,-18px) scale(1.08); }
+    }
+
+    .sector-track {
+      display: flex;
+      width: max-content;
+      animation: sectorRTL 38s linear infinite;
+    }
+
+    .sector-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes sectorRTL {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .page {
+      display: none;
+      animation: pageIn .45s ease both;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .nav-link {
+      position: relative;
+      color: #aab8d5;
+      transition: color .25s ease;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #fff;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 2px;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .25s ease;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      border-radius: 999px;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      transform: scaleX(1);
+    }
+
+    .btn-gradient {
+      background: linear-gradient(100deg, #00f2fe, #4facfe 50%, #a855f7);
+      color: #03101c;
+      font-weight: 800;
+      box-shadow: 0 10px 35px rgba(0,242,254,.18);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 45px rgba(0,242,254,.28);
+    }
+
+    .image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(4,9,22,.05), rgba(4,9,22,.78));
+    }
+
+    .sector-card {
+      min-width: 280px;
+      height: 210px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.09);
+      background: #0b1224;
+    }
+
+    .sector-card img {
+      transition: transform .6s ease;
+    }
+
+    .sector-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .modal {
+      display: none;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .field {
+      width: 100%;
+      background: rgba(3,10,25,.72);
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 12px;
+      color: #fff;
+      padding: 13px 15px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .field:focus {
+      border-color: rgba(0,242,254,.6);
+      box-shadow: 0 0 0 3px rgba(0,242,254,.08);
+    }
+
+    select.field option {
+      background: #081126;
+      color: #fff;
+    }
+
+    .stat-card {
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0,242,254,.25);
+    }
+
+    .grid-lines {
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+
+    @media (max-width: 1100px) {
+      .desktop-nav {
+        gap: 1.25rem !important;
+      }
+      .desktop-nav .nav-link {
+        font-size: .82rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .desktop-nav {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: flex !important;
+      }
+    }
+
+    @media (min-width: 901px) {
+      .mobile-menu-btn {
+        display: none !important;
+      }
+      .mobile-menu {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       TOP RUNNING ANNOUNCEMENT TICKER
+  ========================================================== -->
+  <div class="ticker gradient-border">
+    <div class="ticker-track text-sm font-medium text-slate-200">
+      <div class="px-8">
+        🌐 Global Fieldwork Coverage: APAC | AMER | EMEA | ISME
+        &nbsp; • &nbsp;
+        📊 Services: B2B &amp; B2C Panel Research, Quantitative Surveys (CATI/CAWI), Qualitative IDIs &amp; Focus Groups
+        &nbsp; • &nbsp;
+        💡 Over 10+ Years of Data Precision
+        &nbsp; • &nbsp;
+        🔒 ISO Certified Quality Control
+      </div>
+      <div class="px-8">
+        🌐 Global Fieldwork Coverage: APAC | AMER | EMEA | ISME
+        &nbsp; • &nbsp;
+        📊 Services: B2B &amp; B2C Panel Research, Quantitative Surveys (CATI/CAWI), Qualitative IDIs &amp; Focus Groups
+        &nbsp; • &nbsp;
+        💡 Over 10+ Years of Data Precision
+        &nbsp; • &nbsp;
+        🔒 ISO Certified Quality Control
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       NAVBAR
+  ========================================================== -->
+  <header class="sticky top-[42px] z-90 border-b border-white/10 bg-[#050816]/90 backdrop-blur-xl">
+    <nav class="max-w-[1500px] mx-auto px-5 lg:px-8 h-[82px] flex items-center justify-between gap-6">
+
+      <button onclick="showPage('home')" class="flex items-center gap-3 shrink-0 text-left">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center gradient-border bg-slate-900/80 shadow-neon">
+          <i data-lucide="globe-2" class="w-6 h-6 text-cyan-300"></i>
+        </div>
+        <div>
+          <div class="font-extrabold tracking-tight text-white leading-tight">Strategic Zone</div>
+          <div class="text-[11px] uppercase tracking-[.22em] text-cyan-300">Intelligence</div>
+        </div>
+      </button>
+
+      <!-- Desktop navigation: deliberately generous gap-8 -->
+      <div class="desktop-nav flex items-center gap-8 xl:gap-9">
+        <button class="nav-link active" data-page="home" onclick="showPage('home')">Home</button>
+        <button class="nav-link" data-page="about" onclick="showPage('about')">About Us</button>
+        <button class="nav-link" data-page="services" onclick="showPage('services')">Services</button>
+        <button class="nav-link" data-page="sectors" onclick="showPage('sectors')">Sectors</button>
+        <button class="nav-link" data-page="registration" onclick="showPage('registration')">Panel Registration</button>
+        <button class="nav-link" data-page="login" onclick="showPage('login')">Panel Login</button>
+      </div>
+
+      <div class="flex items-center gap-3 shrink-0">
+        <button onclick="showPage('registration')" class="btn-gradient hidden sm:flex items-center gap-2 rounded-xl px-5 py-3 text-sm">
+          Join Our Panel
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </button>
+
+        <button class="mobile-menu-btn hidden items-center justify-center w-11 h-11 rounded-xl glass-light" onclick="toggleMobileMenu()" aria-label="Open menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobileMenu" class="mobile-menu hidden border-t border-white/10 bg-[#060b1b]/95 px-5 py-5">
+      <div class="flex flex-col gap-5">
+        <button class="text-left text-slate-200" onclick="showPage('home'); toggleMobileMenu()">Home</button>
+        <button class="text-left text-slate-200" onclick="showPage('about'); toggleMobileMenu()">About Us</button>
+        <button class="text-left text-slate-200" onclick="showPage('services'); toggleMobileMenu()">Services</button>
+        <button class="text-left text-slate-200" onclick="showPage('sectors'); toggleMobileMenu()">Sectors</button>
+        <button class="text-left text-slate-200" onclick="showPage('registration'); toggleMobileMenu()">Panel Registration</button>
+        <button class="text-left text-slate-200" onclick="showPage('login'); toggleMobileMenu()">Panel Login</button>
+        <button class="btn-gradient rounded-xl px-5 py-3 text-sm" onclick="showPage('registration'); toggleMobileMenu()">Join Our Panel</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =========================================================
+         HOME PAGE
+    ========================================================== -->
+    <section id="home" class="page active">
+
+      <!-- HERO -->
+      <div class="relative min-h-[700px] overflow-hidden grid-lines">
+        <div class="absolute w-[500px] h-[500px] rounded-full bg-cyan-500/10 blur-[120px] -top-40 -left-40 orb"></div>
+        <div class="absolute w-[450px] h-[450px] rounded-full bg-purple-500/10 blur-[130px] top-20 right-0 orb" style="animation-delay: -2s"></div>
+
+        <div class="max-w-[1400px] mx-auto px-5 lg:px-8 py-24 lg:py-28 relative z-10">
+
+          <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+            <div>
+              <div class="inline-flex items-center gap-2 glass-light rounded-full px-4 py-2 mb-7 text-sm text-cyan-200">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Global Market Intelligence • 50+ Markets
+              </div>
+
+              <h1 class="text-5xl md:text-6xl xl:text-7xl font-extrabold leading-[1.02] tracking-[-.04em]">
+                Precision Market Research
+                <span class="gradient-text">&amp; Global Fieldwork Solutions</span>
+              </h1>
+
+              <p class="mt-7 text-lg md:text-xl text-slate-300 leading-8 max-w-2xl">
+                Strategic Zone Intelligence delivers high-quality B2B and B2C panel research,
+                quantitative surveys, qualitative fieldwork and actionable market intelligence
+                across APAC, AMER, EMEA and ISME.
+              </p>
+
+              <div class="flex flex-wrap gap-4 mt-9">
+                <button onclick="showPage('registration')" class="btn-gradient rounded-xl px-6 py-3.5 flex items-center gap-2">
+                  Join Our Panel
+                  <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </button>
+
+                <button onclick="showPage('services')" class="glass-light rounded-xl px-6 py-3.5 flex items-center gap-2 hover:bg-white/10 transition">
+                  Explore Services
+                  <i data-lucide="layers-3" class="w-5 h-5 text-cyan-300"></i>
+                </button>
+              </div>
+
+              <div class="flex flex-wrap gap-3 mt-9">
+                <span class="glass-light rounded-full px-4 py-2 text-sm">🌏 APAC</span>
+                <span class="glass-light rounded-full px-4 py-2 text-sm">🌎 AMER</span>
+                <span class="glass-light rounded-full px-4 py-2 text-sm">🌍 EMEA</span>
+                <span class="glass-light rounded-full px-4 py-2 text-sm">🌐 ISME</span>
+              </div>
+            </div>
+
+            <!-- LIVE FLOATING / SHAKING RESEARCH IMAGE -->
+            <div class="relative min-h-[470px] flex items-center justify-center">
+
+              <div class="absolute w-[370px] h-[370px] rounded-full bg-cyan-400/10 blur-[90px] animate-pulse"></div>
+
+              <div class="hero-live-image relative w-full max-w-[590px] rounded-[30px] overflow-hidden border border-cyan-300/20 glass shadow-neon">
+
+                <img
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=90"
+                  alt="Market research analytics visualization"
+                  class="w-full h-[430px] object-cover"
+                />
+
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#050816]/90 via-[#050816]/25 to-cyan-400/10"></div>
+
+                <!-- Floating analytics panels -->
+                <div class="absolute top-7 left-7 glass rounded-2xl px-4 py-3">
+                  <div class="text-[10px] uppercase tracking-widest text-slate-400">Global Signal</div>
+                  <div class="flex items-center gap-2 mt-1">
+                    <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                    <span class="text-sm font-bold">Live Intelligence</span>
+                  </div>
+                </div>
+
+                <div class="absolute bottom-7 right-7 glass rounded-2xl px-5 py-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-400/10 flex items-center justify-center">
+                      <i data-lucide="activity" class="text-cyan-300 w-5 h-5"></i>
+                    </div>
+                    <div>
+                      <div class="text-xs text-slate-400">Data Precision</div>
+                      <div class="text-xl font-extrabold text-white">99.9%</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="absolute bottom-7 left-7 glass rounded-xl px-4 py-3 flex items-center gap-3">
+                  <i data-lucide="network" class="w-5 h-5 text-purple-300"></i>
+                  <span class="text-sm font-semibold">50+ Markets</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="max-w-[1400px] mx-auto px-5 lg:px-8 py-16">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="stat-card glass rounded-2xl p-7">
+            <i data-lucide="calendar-days" class="w-7 h-7 text-cyan-300 mb-5"></i>
+            <div class="text-4xl font-extrabold">10+</div>
+            <div class="text-slate-400 mt-2">Years Experience</div>
+          </div>
+          <div class="stat-card glass rounded-2xl p-7">
+            <i data-lucide="users-round" class="w-7 h-7 text-blue-300 mb-5"></i>
+            <div class="text-4xl font-extrabold">1M+</div>
+            <div class="text-slate-400 mt-2">Verified Panelists</div>
+          </div>
+          <div class="stat-card glass rounded-2xl p-7">
+            <i data-lucide="badge-check" class="w-7 h-7 text-emerald-300 mb-5"></i>
+            <div class="text-4xl font-extrabold">100%</div>
+            <div class="text-slate-400 mt-2">Quality Assurance</div>
+          </div>
+          <div class="stat-card glass rounded-2xl p-7">
+            <i data-lucide="globe-2" class="w-7 h-7 text-purple-300 mb-5"></i>
+            <div class="text-4xl font-extrabold">50+</div>
+            <div class="text-slate-400 mt-2">Global Markets</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDHARTH SPOTLIGHT -->
+      <div class="max-w-[1400px] mx-auto px-5 lg:px-8 pb-20">
+        <div class="glass gradient-border rounded-[28px] overflow-hidden">
+          <div class="grid lg:grid-cols-[.75fr_2fr]">
+            <div class="relative p-8 lg:p-12 flex items-center justify-center bg-gradient-to-br from-cyan-400/10 via-blue-500/5 to-purple-500/10">
+              <div class="relative">
+                <div class="w-44 h-44 rounded-[38px] gradient-border bg-[#071025] flex items-center justify-center shadow-neon">
+                  <div class="w-32 h-32 rounded-[30px] bg-gradient-to-br from-cyan-400/15 to-purple-500/20 flex items-center justify-center">
+                    <i data-lucide="shield-user" class="w-20 h-20 text-cyan-200"></i>
+                  </div>
+                </div>
+                <div class="absolute -right-5 -bottom-5 w-14 h-14 rounded-2xl glass flex items-center justify-center">
+                  <i data-lucide="sparkles" class="w-7 h-7 text-purple-300"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-8 lg:p-12">
+              <span class="text-xs uppercase tracking-[.25em] text-cyan-300 font-bold">Leadership &amp; Vision</span>
+              <h2 class="text-3xl md:text-4xl font-extrabold mt-3">Sidharth</h2>
+              <p class="text-cyan-300 font-semibold mt-1">CEO &amp; Founder, Strategic Zone Intelligence</p>
+
+              <p class="text-slate-300 leading-8 mt-6 max-w-4xl">
+                With over 10+ years of pioneering experience in enterprise market intelligence,
+                global fieldwork execution, B2B research and B2C panel development, Sidharth has
+                spearheaded strategic insights for Fortune 500 enterprises across APAC, AMER, EMEA,
+                and ISME.
+              </p>
+
+              <div class="grid sm:grid-cols-3 gap-3 mt-7">
+                <div class="glass-light rounded-xl p-4">
+                  <i data-lucide="briefcase-business" class="w-5 h-5 text-cyan-300"></i>
+                  <div class="text-sm font-bold mt-3">Enterprise Research</div>
+                </div>
+                <div class="glass-light rounded-xl p-4">
+                  <i data-lucide="network" class="w-5 h-5 text-purple-300"></i>
+                  <div class="text-sm font-bold mt-3">Global Fieldwork</div>
+                </div>
+                <div class="glass-light rounded-xl p-4">
+                  <i data-lucide="users" class="w-5 h-5 text-emerald-300"></i>
+                  <div class="text-sm font-bold mt-3">Panel Expansion</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTOR MARQUEE -->
+      <div class="border-y border-white/10 bg-black/10 py-12 overflow-hidden">
+        <div class="max-w-[1400px] mx-auto px-5 lg:px-8 mb-7">
+          <div class="flex items-end justify-between">
+            <div>
+              <span class="text-xs uppercase tracking-[.25em] text-cyan-300">Industry Coverage</span>
+              <h2 class="text-3xl font-extrabold mt-2">Research Across Critical Sectors</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="sector-track gap-5">
+          <div id="sectorMarqueeA" class="flex gap-5"></div>
+          <div id="sectorMarqueeB" class="flex gap-5 ml-5"></div>
+        </div>
+      </div>
+
+      <!-- FEATURED SERVICES -->
+      <div class="max-w-[1400px] mx-auto px-5 lg:px-8 py-20">
+        <div class="max-w-2xl mb-10">
+          <span class="text-xs uppercase tracking-[.25em] text-cyan-300">Featured Services</span>
+          <h2 class="text-4xl font-extrabold mt-3">From research question to reliable insight.</h2>
+          <p class="text-slate-400 mt-4 leading-7">
+            End-to-end fieldwork capabilities built for demanding enterprise research programs.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="glass rounded-2xl p-7 hover:-translate-y-1 transition">
+            <div class="w-12 h-12 rounded-xl bg-cyan-400/10 flex items-center justify-center">
+              <i data-lucide="users-round" class="text-cyan-300"></i>
+            </div>
+            <h3 class="text-xl font-bold mt-6">B2B &amp; B2C Panel Research</h3>
+            <p class="text-slate-400 leading-7 mt-3">Targeted respondent access with quality-focused panel sourcing across global markets.</p>
+            <button onclick="showPage('services')" class="mt-5 text-cyan-300 text-sm font-semibold">Learn more →</button>
+          </div>
+
+          <div class="glass rounded-2xl p-7 hover:-translate-y-1 transition">
+            <div class="w-12 h-12 rounded-xl bg-blue-400/10 flex items-center justify-center">
+              <i data-lucide="bar-chart-3" class="text-blue-300"></i>
+            </div>
+            <h3 class="text-xl font-bold mt-6">Quantitative Surveys</h3>
+            <p class="text-slate-400 leading-7 mt-3">CATI and CAWI execution with scalable sampling, validation and quality control.</p>
+            <button onclick="showPage('services')" class="mt-5 text-cyan-300 text-sm font-semibold">Learn more →</button>
+          </div>
+
+          <div class="glass rounded-2xl p-7 hover:-translate-y-1 transition">
+            <div class="w-12 h-12 rounded-xl bg-purple-400/10 flex items-center justify-center">
+              <i data-lucide="messages-square" class="text-purple-300"></i>
+            </div>
+            <h3 class="text-xl font-bold mt-6">Qualitative Research</h3>
+            <p class="text-slate-400 leading-7 mt-3">IDIs, focus groups and specialist recruitment designed to uncover deeper human insights.</p>
+            <button onclick="showPage('services')" class="mt-5 text-cyan-300 text-sm font-semibold">Learn more →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         ABOUT US PAGE
+    ========================================================== -->
+    <section id="about" class="page">
+      <div class="max-w-[1400px] mx-auto px-5 lg:px-8 py-20">
+
+        <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-12 items-center">
+          <div>
+            <span class="text-xs uppercase tracking-[.25em] text-cyan-300">About Strategic Zone Intelligence</span>
+            <h1 class="text-5xl md:text-6xl font-extrabold mt-4 leading-tight">
+              Intelligence built around
+              <span class="gradient-text">precision.</span>
+            </h1>
+            <p class="text-xl text-slate-300 leading-8 mt-7">
+              We are a global market research and fieldwork partner helping enterprises transform
+              research objectives into reliable, validated and decision-ready data.
+            </p>
+          </div>
+
+          <div class="rounded-[30px] overflow-hidden glass">
+            <img
+              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=90"
+              alt="Business research and strategy meeting"
+              class="w-full h-[360px] object-cover"
+            />
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6 mt-20">
+          <article class="glass rounded-3xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=90" alt="Technology research infrastructure" class="w-full h-64 object-cover">
+            <div class="p-8">
+              <span class="text-cyan-300 text-xs uppercase tracking-[.2em] font-bold">01</span>
+              <h2 class="text-3xl font-extrabold mt-3">Who We Are</h2>
+              <p class="text-slate-400 leading-8 mt-5">
+                Strategic Zone Intelligence is a market research and global fieldwork organization
+                built around more than a decade of experience in B2B and B2C research. Our operating
+                model combines respondent recruitment, panel management, survey programming support,
+                CATI and CAWI execution, multilingual fieldwork and research quality assurance.
+              </p>
+              <p class="text-slate-400 leading-8 mt-4">
+                Our regional capabilities allow research teams to access audiences across APAC,
+                AMER, EMEA and ISME while maintaining consistent fieldwork standards and transparent
+                quality processes.
+              </p>
+            </div>
+          </article>
+
+          <article class="glass rounded-3xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=90" alt="Collaborative research team" class="w-full h-64 object-cover">
+            <div class="p-8">
+              <span class="text-blue-300 text-xs uppercase tracking-[.2em] font-bold">02</span>
+              <h2 class="text-3xl font-extrabold mt-3">What We Do</h2>
+              <p class="text-slate-400 leading-8 mt-5">
+                We provide end-to-end quantitative and qualitative fieldwork execution. From sample
+                design and respondent recruitment to survey completion, validation and delivery,
+                our teams support complex research programs with operational discipline.
+              </p>
+              <p class="text-slate-400 leading-8 mt-4">
+                Our capabilities include B2B decision-maker recruitment, B2C audience targeting,
+                CATI, CAWI, IDIs, focus groups and specialist audience research.
+              </p>
+            </div>
+          </article>
+
+          <article class="glass rounded-3xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=90" alt="Professional team collaboration" class="w-full h-64 object-cover">
+            <div class="p-8">
+              <span class="text-emerald-300 text-xs uppercase tracking-[.2em] font-bold">03</span>
+              <h2 class="text-3xl font-extrabold mt-3">Why Join Us</h2>
+              <p class="text-slate-400 leading-8 mt-5">
+                For panelists, we provide access to relevant research opportunities while respecting
+                privacy, eligibility and participation requirements. For global enterprise clients,
+                we offer a structured route to qualified audiences and fieldwork execution.
+              </p>
+              <p class="text-slate-400 leading-8 mt-4">
+                Our focus is simple: dependable respondents, clean data, responsive fieldwork and
+                clear communication throughout the project lifecycle.
+              </p>
+            </div>
+          </article>
+
+          <article class="glass rounded-3xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=90" alt="Digital quality control and data systems" class="w-full h-64 object-cover">
+            <div class="p-8">
+              <span class="text-purple-300 text-xs uppercase tracking-[.2em] font-bold">04</span>
+              <h2 class="text-3xl font-extrabold mt-3">Our Quality Control Framework</h2>
+              <p class="text-slate-400 leading-8 mt-5">
+                Quality is integrated into our workflow rather than treated as a final-stage check.
+                Our framework can incorporate digital fingerprinting, duplicate detection,
+                anti-bot validation, response-pattern monitoring, geo and device signals,
+                respondent verification and project-level quality audits.
+              </p>
+              <p class="text-slate-400 leading-8 mt-4">
+                We continuously monitor fieldwork performance to identify anomalies early and
+                maintain confidence in delivered research data.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Founder About -->
+        <div class="mt-20 glass gradient-border rounded-[30px] overflow-hidden">
+          <div class="grid lg:grid-cols-[.7fr_1.3fr]">
+            <div class="p-10 lg:p-14 flex items-center justify-center bg-gradient-to-br from-cyan-500/10 to-purple-500/10">
+              <div class="text-center">
+                <div class="w-40 h-40 rounded-[35px] gradient-border mx-auto flex items-center justify-center bg-[#071025] shadow-neon">
+                  <i data-lucide="crown" class="w-20 h-20 text-cyan-200"></i>
+                </div>
+                <div class="mt-5 text-xs uppercase tracking-[.25em] text-cyan-300">Founder Spotlight</div>
+              </div>
+            </div>
+
+            <div class="p-10 lg:p-14">
+              <h2 class="text-4xl font-extrabold">Sidharth</h2>
+              <p class="text-cyan-300 font-semibold mt-2">CEO &amp; Founder</p>
+              <p class="text-slate-300 leading-8 mt-6">
+                With over 10+ years of enterprise experience in market research, global fieldwork
+                execution and B2B/B2C panel expansion, Sidharth has shaped Strategic Zone Intelligence
+                around a quality-first approach to market intelligence.
+              </p>
+              <p class="text-slate-400 leading-8 mt-4">
+                His vision is to combine global respondent reach, operational discipline and
+                technology-enabled quality control so research teams can move from fieldwork to
+                insight with greater confidence.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-20">
+          <div class="grid md:grid-cols-3 gap-5">
+            <div class="glass rounded-2xl p-7">
+              <i data-lucide="languages" class="w-7 h-7 text-cyan-300"></i>
+              <h3 class="font-bold text-xl mt-5">Multilingual Execution</h3>
+              <p class="text-slate-400 mt-3 leading-7">Multilingual CATI and CAWI fieldwork support for diverse international audiences.</p>
+            </div>
+            <div class="glass rounded-2xl p-7">
+              <i data-lucide="scan-face" class="w-7 h-7 text-purple-300"></i>
+              <h3 class="font-bold text-xl mt-5">Respondent Validation</h3>
+              <p class="text-slate-400 mt-3 leading-7">Layered checks designed to improve respondent integrity and reduce fraudulent participation.</p>
+            </div>
+            <div class="glass rounded-2xl p-7">
+              <i data-lucide="clipboard-check" class="w-7 h-7 text-emerald-300"></i>
+              <h3 class="font-bold text-xl mt-5">Fieldwork Governance</h3>
+              <p class="text-slate-400 mt-3 leading-7">Structured monitoring and quality audits throughout the research lifecycle.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SERVICES PAGE
+    ========================================================== -->
+    <section id="services" class="page">
+      <div class="max-w-[1400px] mx-auto px-5 lg:px-8 py-20">
+
+        <div class="max-w-3xl">
+          <span class="text-xs uppercase tracking-[.25em] text-cyan-300">Our Services</span>
+          <h1 class="text-5xl md:text-6xl font-extrabold mt-4">Fieldwork engineered for research confidence.</h1>
+          <p class="text-xl text-slate-300 leading-8 mt-6">
+            Flexible research execution across audiences, methodologies and markets.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-6 mt-16">
+
+          <article class="glass rounded-3xl overflow-hidden">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1400&q=90" alt="B2B and B2C market research" class="w-full h-72 object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#071025] via-transparent to-transparent"></div>
+              <div class="absolute bottom-5 left-6 w-12 h-12 rounded-xl glass flex items-center justify-center">
+                <i data-lucide="users-round" class="text-cyan-300"></i>
+              </div>
+            </div>
+            <div class="p-8">
+              <h2 class="text-2xl font-extrabold">B2B &amp; B2C Market Research</h2>
+              <p class="text-slate-400 leading-7 mt-4">
+                Access qualified business decision-makers, professionals, consumers and specialist
+                audiences through structured recruitment and panel research programs.
+              </p>
+              <ul class="mt-6 space-y-3 text-sm text-slate-300">
+                <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-300 shrink-0"></i> Professional &amp; consumer audiences</li>
+                <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-300 shrink-0"></i> Specialist respondent targeting</li>
+                <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-300 shrink-0"></i> Multi-market recruitment</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="glass rounded-3xl overflow-hidden">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=90" alt="Quantitative survey analytics" class="w-full h-72 object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#071025] via-transparent to-transparent"></div>
+              <div class="absolute bottom-5 left-6 w-12 h-12 rounded-xl glass flex items-center justify-center">
+                <i data-lucide="bar-chart-3" class="text-blue-300"></i>
+              </div>
+            </div>
+            <div class="p-8">
+              <h2 class="text-2xl font-extrabold">Quantitative Surveys (CATI/CAWI)</h2>
+              <p class="text-slate-400 leading-7 mt-4">
+                Scalable quantitative fieldwork designed for speed, sample accuracy and robust
+                respondent validation across international markets.
+              </p>
+              <ul class="mt-6 space-y-3 text-sm text-slate-300">
+                <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-300 shrink-0"></i> CATI telephone interviewing</li>
+                <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-300 shrink-0"></i> CAWI online surveys</li>
+                <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-300 shrink-0"></i> Sample &amp; quota management</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="glass rounded-3xl overflow-hidden">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=90" alt="Qualitative research focus group" class="w-full h-72 object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#071025] via-transparent to-transparent"></div>
+              <div class="absolute bottom-5 left-6 w-12 h-12 rounded-xl glass flex items-center justify-center">
+                <i data-lucide="messages-square" class="text-purple-300"></i>
+              </div>
+            </div>
+            <div class="p-8">
+              <h2 class="text-2xl font-extrabold">Qualitative Research, IDIs &amp; Focus Groups</h2>
+              <p class="text-slate-400 leading-7 mt-4">
+                Rich qualitative recruitment and fieldwork for exploratory research, customer
+                understanding, product discovery and strategic decision-making.
+              </p>
+              <ul class="mt-6 space-y-3 text-sm text-slate-300">
+                <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-300 shrink-0"></i> In-depth interviews</li>
+                <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-300 shrink-0"></i> Focus groups</li>
+                <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-300 shrink-0"></i> Specialist audience recruitment</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="mt-12 glass rounded-3xl p-8 lg:p-10">
+          <div class="grid md:grid-cols-4 gap-5">
+            <div><div class="text-cyan-300 font-bold">01</div><div class="font-bold mt-2">Audience Definition</div></div>
+            <div><div class="text-blue-300 font-bold">02</div><div class="font-bold mt-2">Recruitment &amp; Sampling</div></div>
+            <div><div class="text-purple-300 font-bold">03</div><div class="font-bold mt-2">Fieldwork Execution</div></div>
+            <div><div class="text-emerald-300 font-bold">04</div><div class="font-bold mt-2">Validation &amp; Delivery</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTORS PAGE
+    ========================================================== -->
+    <section id="sectors" class="page">
+      <div class="max-w-[1400px] mx-auto px-5 lg:px-8 py-20">
+
+        <div class="max-w-3xl">
+          <span class="text-xs uppercase tracking-[.25em] text-cyan-300">Sector Expertise</span>
+          <h1 class="text-5xl md:text-6xl font-extrabold mt-4">Deep coverage across high-impact industries.</h1>
+          <p class="text-xl text-slate-300 leading-8 mt-6">
+            Research capabilities built around the audiences, terminology and business context of each sector.
+          </p>
+        </div>
+
+        <div id="sectorGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-16"></div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PANEL REGISTRATION
+    ========================================================== -->
+    <section id="registration" class="page">
+      <div class="max-w-[1200px] mx-auto px-5 lg:px-8 py-20">
+
+        <div class="text-center max-w-3xl mx-auto">
+          <span class="text-xs uppercase tracking-[.25em] text-cyan-300">Panel Registration</span>
+          <h1 class="text-5xl md:text-6xl font-extrabold mt-4">Join our global research panel.</h1>
+          <p class="text-slate-300 leading-8 mt-6">
+            Register your professional profile to be considered for relevant B2B and market research opportunities.
+          </p>
+        </div>
+
+        <div class="glass rounded-[30px] p-6 md:p-10 mt-14">
+          <form id="registrationForm" class="space-y-8">
+
+            <div>
+              <h2 class="text-xl font-bold mb-5 flex items-center gap-3">
+                <span class="w-9 h-9 rounded-lg bg-cyan-400/10 text-cyan-300 flex items-center justify-center">1</span>
+                Personal &amp; Professional Details
+              </h2>
+
+              <div class="grid md:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-sm font-medium text-slate-300 mb-2">Full Name *</label>
+                  <input required type="text" class="field" placeholder="Enter your full name">
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-slate-300 mb-2">Work Email *</label>
+                  <input required type="email" class="field" placeholder="name@company.com">
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-slate-300 mb-2">Mobile Number *</label>
+                  <input required type="tel" class="field" placeholder="+91 98765 43210">
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-slate-300 mb-2">Designation *</label>
+                  <input required type="text" class="field" placeholder="e.g. Marketing Director">
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-xl font-bold mb-5 flex items-center gap-3">
+                <span class="w-9 h-9 rounded-lg bg-purple-400/10 text-purple-300 flex items-center justify-center">2</span>
+                Organization Profile
+              </h2>
+
+              <div class="grid md:grid-cols-2 gap-5">
+
+                <div>
+                  <label class="block text-sm font-medium text-slate-300 mb-2">Industry / Sector *</label>
+                  <select required class="field" id="industrySelect">
+                    <option value="">Select sector</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-slate-300 mb-2">Country *</label>
+                  <select required class="field" id="countrySelect">
+                    <option value="">Select country</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-slate-300 mb-2">Employee Size *</label>
+                  <select required class="field">
+                    <option value="">Select employee size</option>
+                    <option>1-10</option>
+                    <option>11-50</option>
+                    <option>51-200</option>
+                    <option>201-1000</option>
+                    <option>1000+</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-slate-300 mb-2">Revenue *</label>
+                  <select required class="field">
+                    <option value="">Select revenue</option>
+                    <option>Under $1M</option>
+                    <option>$1M-$10M</option>
+                    <option>$10M-$50M</option>
+                    <option>$50M+</option>
+                  </select>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 pt-3">
+              <p class="text-xs text-slate-500 leading-5 max-w-xl">
+                By submitting this form, you confirm that the information provided is accurate and
+                may be used to evaluate eligibility for relevant research opportunities.
+              </p>
+
+              <button type="submit" class="btn-gradient rounded-xl px-7 py-3.5 flex items-center gap-2 shrink-0">
+                Register As Panelist
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PANEL LOGIN
+    ========================================================== -->
+    <section id="login" class="page">
+      <div class="max-w-[650px] mx-auto px-5 lg:px-8 py-24">
+
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto rounded-2xl gradient-border flex items-center justify-center bg-[#071025] shadow-neon">
+            <i data-lucide="lock-keyhole" class="w-7 h-7 text-cyan-300"></i>
+          </div>
+          <h1 class="text-4xl md:text-5xl font-extrabold mt-7">Panel Login</h1>
+          <p class="text-slate-400 mt-4">Access your Strategic Zone Intelligence panel profile.</p>
+        </div>
+
+        <div class="glass rounded-[28px] p-7 md:p-10 mt-10">
+
+          <form id="loginForm" class="space-y-5">
+
+            <div>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Username / Email</label>
+              <input required type="text" class="field" placeholder="Enter username or email">
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Password</label>
+              <input required type="password" class="field" placeholder="Enter password">
+            </div>
+
+            <div class="flex items-center justify-between gap-4 text-sm">
+              <label class="flex items-center gap-2 text-slate-400 cursor-pointer">
+                <input type="checkbox" class="accent-cyan-400">
+                Remember Me
+              </label>
+              <button type="button" onclick="forgotPassword()" class="text-cyan-300 hover:text-cyan-200">Forgot Password?</button>
+            </div>
+
+            <button type="submit" class="btn-gradient w-full rounded-xl py-3.5 flex items-center justify-center gap-2">
+              Login to Panel
+              <i data-lucide="log-in" class="w-4 h-4"></i>
+            </button>
+          </form>
+
+          <div class="border-t border-white/10 mt-7 pt-7 text-center text-sm text-slate-400">
+            New Panelist?
+            <button onclick="showPage('registration')" class="text-cyan-300 font-semibold ml-1">
+              Register Here
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer class="border-t border-white/10 bg-[#030712] mt-10">
+    <div class="max-w-[1400px] mx-auto px-5 lg:px-8 py-14">
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+        <div class="lg:col-span-1">
+          <button onclick="showPage('home')" class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-xl gradient-border flex items-center justify-center">
+              <i data-lucide="globe-2" class="w-6 h-6 text-cyan-300"></i>
+            </div>
+            <div class="text-left">
+              <div class="font-extrabold text-white">Strategic Zone</div>
+              <div class="text-[10px] uppercase tracking-[.2em] text-cyan-300">Intelligence</div>
+            </div>
+          </button>
+
+          <p class="text-slate-500 text-sm leading-6 mt-5">
+            Global market research and fieldwork solutions built around precision,
+            quality and reliable respondent intelligence.
+          </p>
+
+          <div class="flex gap-3 mt-6">
+            <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-xl glass-light flex items-center justify-center hover:text-cyan-300 transition">
+              <i data-lucide="linkedin" class="w-4 h-4"></i>
+            </a>
+            <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-xl glass-light flex items-center justify-center hover:text-cyan-300 transition">
+              <i data-lucide="facebook" class="w-4 h-4"></i>
+            </a>
+            <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-xl glass-light flex items-center justify-center hover:text-cyan-300 transition">
+              <i data-lucide="twitter" class="w-4 h-4"></i>
+            </a>
+            <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-xl glass-light flex items-center justify-center hover:text-cyan-300 transition">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-white">Quick Links</h3>
+          <div class="flex flex-col gap-3 mt-5 text-sm text-slate-500">
+            <button onclick="showPage('home')" class="text-left hover:text-cyan-300 transition">Home</button>
+            <button onclick="showPage('about')" class="text-left hover:text-cyan-300 transition">About Us</button>
+            <button onclick="showPage('services')" class="text-left hover:text-cyan-300 transition">Services</button>
+            <button onclick="showPage('sectors')" class="text-left hover:text-cyan-300 transition">Sectors</button>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-white">Panel</h3>
+          <div class="flex flex-col gap-3 mt-5 text-sm text-slate-500">
+            <button onclick="showPage('registration')" class="text-left hover:text-cyan-300 transition">Panel Registration</button>
+            <button onclick="showPage('login')" class="text-left hover:text-cyan-300 transition">Panel Login</button>
+            <button onclick="showPage('registration')" class="text-left hover:text-cyan-300 transition">Join Our Panel</button>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-white">Global Regions</h3>
+          <div class="flex flex-wrap gap-2 mt-5">
+            <span class="glass-light rounded-full px-3 py-2 text-xs text-cyan-200">APAC</span>
+            <span class="glass-light rounded-full px-3 py-2 text-xs text-blue-200">AMER</span>
+            <span class="glass-light rounded-full px-3 py-2 text-xs text-purple-200">EMEA</span>
+            <span class="glass-light rounded-full px-3 py-2 text-xs text-emerald-200">ISME</span>
+          </div>
+
+          <div class="mt-7 text-sm text-slate-500 flex items-start gap-3">
+            <i data-lucide="shield-check" class="w-5 h-5 text-emerald-300 shrink-0"></i>
+            <span>Quality-led fieldwork with structured respondent validation.</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="border-t border-white/10 mt-12 pt-7 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-600">
+        <span>© 2026 Strategic Zone Intelligence. All rights reserved.</span>
+        <span>Global Market Research • Panel Intelligence • Fieldwork Solutions</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       SUCCESS MODAL
+  ========================================================== -->
+  <div id="successModal" class="modal fixed inset-0 z-[200] items-center justify-center bg-black/70 backdrop-blur-md px-5">
+    <div class="glass gradient-border rounded-[28px] max-w-md w-full p-8 text-center shadow-neon">
+      <div class="w-16 h-16 mx-auto rounded-2xl bg-emerald-400/10 flex items-center justify-center">
+        <i data-lucide="check-circle-2" class="w-9 h-9 text-emerald-300"></i>
+      </div>
+
+      <h2 class="text-2xl font-extrabold mt-6">Registration Submitted</h2>
+      <p class="text-slate-400 leading-7 mt-3">
+        Thank you for registering with Strategic Zone Intelligence.
+        Your profile has been successfully submitted for panel consideration.
+      </p>
+
+      <button onclick="closeSuccessModal()" class="btn-gradient rounded-xl px-7 py-3 mt-7">
+        Done
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================== -->
+  <script>
+    /* ---------------------------------------------------------
+       DATA
+    --------------------------------------------------------- */
+
+    const sectors = [
+      {
+        name: "Healthcare & Pharma",
+        icon: "heart-pulse",
+        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=85",
+        color: "text-rose-300"
+      },
+      {
+        name: "BFSI",
+        icon: "landmark",
+        image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1000&q=85",
+        color: "text-cyan-300"
+      },
+      {
+        name: "FMCG",
+        icon: "shopping-basket",
+        image: "https://images.unsplash.com/photo-1601598851547-4302969d4d0e?auto=format&fit=crop&w=1000&q=85",
+        color: "text-amber-300"
+      },
+      {
+        name: "Automotive & EV",
+        icon: "car-front",
+        image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1000&q=85",
+        color: "text-blue-300"
+      },
+      {
+        name: "IT & Telecom",
+        icon: "cpu",
+        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85",
+        color: "text-purple-300"
+      },
+      {
+        name: "E-Commerce & Retail",
+        icon: "shopping-cart",
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1000&q=85",
+        color: "text-emerald-300"
+      },
+      {
+        name: "Media & Entertainment",
+        icon: "play-square",
+        image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=85",
+        color: "text-pink-300"
+      },
+      {
+        name: "B2B Manufacturing",
+        icon: "factory",
+        image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1000&q=85",
+        color: "text-orange-300"
+      },
+      {
+        name: "Travel & Hospitality",
+        icon: "plane",
+        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=85",
+        color: "text-sky-300"
+      },
+      {
+        name: "Government & Public Sector",
+        icon: "building-2",
+        image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1000&q=85",
+        color: "text-violet-300"
+      }
+    ];
+
+    const countries = [
+      "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda",
+      "Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain",
+      "Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan",
+      "Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria",
+      "Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon","Canada",
+      "Central African Republic","Chad","Chile","China","Colombia","Comoros",
+      "Congo","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic",
+      "Democratic Republic of the Congo","Denmark","Djibouti","Dominica",
+      "Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea",
+      "Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland","France",
+      "Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala",
+      "Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland",
+      "India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica",
+      "Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait","Kyrgyzstan",
+      "Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein",
+      "Lithuania","Luxembourg","Madagascar","Malawi","Malaysia","Maldives",
+      "Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico",
+      "Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco",
+      "Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands",
+      "New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia",
+      "Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea",
+      "Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania",
+      "Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia",
+      "Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe",
+      "Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore",
+      "Slovakia","Slovenia","Solomon Islands","Somalia","South Africa",
+      "South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname",
+      "Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand",
+      "Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey",
+      "Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates",
+      "United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu",
+      "Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"
+    ];
+
+    /* ---------------------------------------------------------
+       PAGE NAVIGATION
+    --------------------------------------------------------- */
+
+    function showPage(pageId) {
+      document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+      });
+
+      const target = document.getElementById(pageId);
+
+      if (target) {
+        target.classList.add("active");
+      }
+
+      document.querySelectorAll(".nav-link").forEach(link => {
+        link.classList.toggle("active", link.dataset.page === pageId);
+      });
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+      history.replaceState(null, "", "#" + pageId);
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.classList.toggle("hidden");
+    }
+
+    /* ---------------------------------------------------------
+       BUILD SECTOR GRID
+    --------------------------------------------------------- */
+
+    function buildSectorGrid() {
+      const grid = document.getElementById("sectorGrid");
+
+      grid.innerHTML = sectors.map(sector => `
+        <article class="group relative overflow-hidden rounded-3xl min-h-[330px] border border-white/10 bg-[#091126]">
+          <img
+            src="${sector.image}"
+            alt="${sector.name}"
+            loading="lazy"
+            class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110"
+          />
+
+          <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/45 to-transparent"></div>
+
+          <div class="absolute top-5 right-5 w-11 h-11 rounded-xl glass flex items-center justify-center">
+            <i data-lucide="${sector.icon}" class="w-5 h-5 ${sector.color}"></i>
+          </div>
+
+          <div class="absolute bottom-0 left-0 right-0 p-7">
+            <div class="text-xs uppercase tracking-[.2em] text-slate-400 mb-2">Sector Intelligence</div>
+            <h2 class="text-2xl font-extrabold">${sector.name}</h2>
+            <div class="mt-4 flex items-center gap-2 text-sm text-cyan-300">
+              Explore research capability
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    /* ---------------------------------------------------------
+       BUILD SECTOR MARQUEE
+    --------------------------------------------------------- */
+
+    function sectorMarqueeCards() {
+      return sectors.map(sector => `
+        <div class="sector-card">
+          <img
+            src="${sector.image}"
+            alt="${sector.name}"
+            class="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+          >
+          <div class="image-overlay"></div>
+          <div class="absolute bottom-5 left-5 right-5 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl glass flex items-center justify-center">
+              <i data-lucide="${sector.icon}" class="w-5 h-5 ${sector.color}"></i>
+            </div>
+            <div>
+              <div class="font-bold">${sector.name}</div>
+              <div class="text-xs text-slate-400">Market intelligence</div>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function buildSectorMarquee() {
+      const cards = sectorMarqueeCards();
+      document.getElementById("sectorMarqueeA").innerHTML = cards;
+      document.getElementById("sectorMarqueeB").innerHTML = cards;
+    }
+
+    /* ---------------------------------------------------------
+       FORM DROPDOWNS
+    --------------------------------------------------------- */
+
+    function populateFormOptions() {
+      const countrySelect = document.getElementById("countrySelect");
+      const industrySelect = document.getElementById("industrySelect");
+
+      countries.forEach(country => {
+        const option = document.createElement("option");
+        option.value = country;
+        option.textContent = country;
+        countrySelect.appendChild(option);
+      });
+
+      sectors.forEach(sector => {
+        const option = document.createElement("option");
+        option.value = sector.name;
+        option.textContent = sector.name;
+        industrySelect.appendChild(option);
+      });
+    }
+
+    /* ---------------------------------------------------------
+       SUCCESS MODAL
+    --------------------------------------------------------- */
+
+    function openSuccessModal() {
+      document.getElementById("successModal").classList.add("show");
+      document.body.style.overflow = "hidden";
+      lucide.createIcons();
+    }
+
+    function closeSuccessModal() {
+      document.getElementById("successModal").classList.remove("show");
+      document.body.style.overflow = "";
+    }
+
+    /* ---------------------------------------------------------
+       REGISTRATION FORM
+    --------------------------------------------------------- */
+
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      if (!this.checkValidity()) {
+        this.reportValidity();
+        return;
+      }
+
+      openSuccessModal();
+      this.reset();
+    });
+
+    /* ---------------------------------------------------------
+       LOGIN FORM
+    --------------------------------------------------------- */
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const button = this.querySelector("button[type='submit']");
+      const original = button.innerHTML;
+
+      button.innerHTML = `
+        <i data-lucide="loader-circle" class="w-4 h-4 animate-spin"></i>
+        Authentication Demo
+      `;
+
+      lucide.createIcons();
+
+      setTimeout(() => {
+        button.innerHTML = original;
+        lucide.createIcons();
+        alert("Panel login is ready for backend authentication integration.");
+      }, 900);
+    });
+
+    function forgotPassword() {
+      alert("Password recovery is ready for backend/email integration.");
+    }
+
+    /* ---------------------------------------------------------
+       CLOSE MODAL ON BACKDROP
+    --------------------------------------------------------- */
+
+    document.getElementById("successModal").addEventListener("click", function(event) {
+      if (event.target === this) {
+        closeSuccessModal();
+      }
+    });
+
+    /* ---------------------------------------------------------
+       ESCAPE KEY
+    --------------------------------------------------------- */
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeSuccessModal();
+      }
+    });
+
+    /* ---------------------------------------------------------
+       INITIALIZATION
+    --------------------------------------------------------- */
+
+    document.addEventListener("DOMContentLoaded", () => {
+      buildSectorGrid();
+      buildSectorMarquee();
+      populateFormOptions();
+
+      lucide.createIcons();
+
+      const hash = window.location.hash.replace("#", "");
+
+      if (hash && document.getElementById(hash)) {
+        showPage(hash);
+      } else {
+        showPage("home");
+      }
+    });
+  </script>
+
+</body>
+</html>
