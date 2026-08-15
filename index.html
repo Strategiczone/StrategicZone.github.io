@@ -1508,17 +1508,19 @@
       buildSectorMarquee();
       populateFormOptions();
 
-      lucide.createIcons();
+     lucide.createIcons();
 
-      const hash = window.location.hash.replace("#", "");
+    const hash = window.location.hash.replace("#", "");
 
-      if (hash && document.getElementById(hash)) {
-        showPage(hash);
-      } else {
-        showPage("home");
-      }
-    });
-    <script>
+    if (hash && document.getElementById(hash)) {
+      showPage(hash);
+    } else {
+      showPage("home");
+    }
+  });
+</script>
+
+<script>
   const scriptURL = 'https://script.google.com/macros/s/AKfycbzByscRCx-T8Lmm8QpyGn5iakSiGHLUiOw8_Besvvy2AYmwo6OB_aUbuPXUMMJjbyIv/exec';
   const form = document.getElementById('registrationForm');
 
@@ -1549,7 +1551,8 @@
              btn.innerText = 'Register As Panelist';
            }
         });
-  </script>
-
+    });
+  }
+</script>
 </body>
 </html>
