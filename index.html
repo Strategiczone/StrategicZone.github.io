@@ -1518,39 +1518,43 @@
       showPage("home");
     }
   });
-</script>
-
 <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbwYiglH4xZA_nmglp85TFsZuQbF_QpAs0EVxcgasxt11NWsV0CnQZVaLg2mhCDEdgxV/exec';
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxJDhaPebgwKIC_eQTPcSrednp1TxntHcBAnE2anvguYtR3rSaTMsFGw2kgrzijM21f/exec';
   const form = document.getElementById('registrationForm');
 
   if (form) {
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
-      
+
       const btn = form.querySelector('button[type="submit"]');
       if (btn) {
         btn.disabled = true;
         btn.innerText = 'Submitting...';
       }
 
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-           alert("Thank you! You have been successfully registered as a Panelist.");
-           form.reset();
-           if (btn) {
-             btn.disabled = false;
-             btn.innerText = 'Register As Panelist';
-           }
-        })
-        .catch(error => {
-           console.error('Error!', error.message);
-           alert("Something went wrong. Please try again.");
-           if (btn) {
-             btn.disabled = false;
-             btn.innerText = 'Register As Panelist';
-           }
-        });
+      // Automatically capture all input fields with name attributes
+      const formData = new FormData(form);
+
+      fetch(scriptURL, { 
+        method: 'POST', 
+        body: formData 
+      })
+      .then(response => {
+        alert("Thank you! Registration successful.");
+        form.reset();
+        if (btn) {
+          btn.disabled = false;
+          btn.innerText = 'Register As Panelist';
+        }
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        alert("Something went wrong. Please try again.");
+        if (btn) {
+          btn.disabled = false;
+          btn.innerText = 'Register As Panelist';
+        }
+      });
     });
   }
 </script>
