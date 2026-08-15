@@ -1522,34 +1522,33 @@
   const scriptURL = 'https://script.google.com/macros/s/AKfycbzByscRCx-T8Lmm8QpyGn5iakSiGHLUiOw8_Besvvy2AYmwo6OB_aUbuPXUMMJjbyIv/exec';
   const form = document.getElementById('registrationForm');
 
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    
-    const btn = form.querySelector('button[type="submit"]');
-    if(btn) {
-      btn.disabled = true;
-      btn.innerText = 'Submitting...';
-    }
+  if (form) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerText = 'Submitting...';
+      }
 
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => {
-         alert("Thank you! You have been successfully registered as a Panelist.");
-         form.reset();
-         if(btn) {
-           btn.disabled = false;
-           btn.innerText = 'Register As Panelist';
-         }
-      })
-      .catch(error => {
-         console.error('Error!', error.message);
-         alert("Something went wrong. Please try again.");
-         if(btn) {
-           btn.disabled = false;
-           btn.innerText = 'Register As Panelist';
-         }
-      });
-  });
-</script>
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+           alert("Thank you! You have been successfully registered as a Panelist.");
+           form.reset();
+           if (btn) {
+             btn.disabled = false;
+             btn.innerText = 'Register As Panelist';
+           }
+        })
+        .catch(error => {
+           console.error('Error!', error.message);
+           alert("Something went wrong. Please try again.");
+           if (btn) {
+             btn.disabled = false;
+             btn.innerText = 'Register As Panelist';
+           }
+        });
   </script>
 
 </body>
