@@ -950,22 +950,22 @@
               <div class="grid md:grid-cols-2 gap-5">
                 <div>
                   <label class="block text-sm font-medium text-slate-300 mb-2">Full Name *</label>
-                  <input required type="text" class="field" placeholder="Enter your full name">
+                  <input required type="text" name="FullName" class="field" placeholder="Enter your full name">
                 </div>
 
                 <div>
                   <label class="block text-sm font-medium text-slate-300 mb-2">Work Email *</label>
-                  <input required type="email" class="field" placeholder="name@company.com">
+                  <input required type="email" name="WorkEmail" class="field" placeholder="name@company.com">
                 </div>
 
                 <div>
                   <label class="block text-sm font-medium text-slate-300 mb-2">Mobile Number *</label>
-                  <input required type="tel" class="field" placeholder="+91 98765 43210">
+                  <input required type="tel" name="MobileNumber" class="field" placeholder="+91 98765 43210">
                 </div>
 
                 <div>
                   <label class="block text-sm font-medium text-slate-300 mb-2">Designation *</label>
-                  <input required type="text" class="field" placeholder="e.g. Marketing Director">
+                  <input required type="text" name="Designation" class="field" placeholder="e.g. Marketing Director">
                 </div>
               </div>
             </div>
@@ -980,21 +980,21 @@
 
                 <div>
                   <label class="block text-sm font-medium text-slate-300 mb-2">Industry / Sector *</label>
-                  <select required class="field" id="industrySelect">
+                  <select required name="IndustrySector" class="field" id="industrySelect">
                     <option value="">Select sector</option>
                   </select>
                 </div>
 
                 <div>
                   <label class="block text-sm font-medium text-slate-300 mb-2">Country *</label>
-                  <select required class="field" id="countrySelect">
+                  <select required name="Country" class="field" id="countrySelect">
                     <option value="">Select country</option>
                   </select>
                 </div>
 
                 <div>
                   <label class="block text-sm font-medium text-slate-300 mb-2">Employee Size *</label>
-                  <select required class="field">
+                  <select required name="EmployeeSize" class="field">
                     <option value="">Select employee size</option>
                     <option>1-10</option>
                     <option>11-50</option>
@@ -1006,7 +1006,7 @@
 
                 <div>
                   <label class="block text-sm font-medium text-slate-300 mb-2">Revenue *</label>
-                  <select required class="field">
+                  <select required name="Revenue" class="field">
                     <option value="">Select revenue</option>
                     <option>Under $1M</option>
                     <option>$1M-$10M</option>
@@ -1518,6 +1518,38 @@
         showPage("home");
       }
     });
+    <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzByscRCx-T8Lmm8QpyGn5iakSiGHLUiOw8_Besvvy2AYmwo6OB_aUbuPXUMMJjbyIv/exec';
+  const form = document.getElementById('registrationForm');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    
+    const btn = form.querySelector('button[type="submit"]');
+    if(btn) {
+      btn.disabled = true;
+      btn.innerText = 'Submitting...';
+    }
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+         alert("Thank you! You have been successfully registered as a Panelist.");
+         form.reset();
+         if(btn) {
+           btn.disabled = false;
+           btn.innerText = 'Register As Panelist';
+         }
+      })
+      .catch(error => {
+         console.error('Error!', error.message);
+         alert("Something went wrong. Please try again.");
+         if(btn) {
+           btn.disabled = false;
+           btn.innerText = 'Register As Panelist';
+         }
+      });
+  });
+</script>
   </script>
 
 </body>
